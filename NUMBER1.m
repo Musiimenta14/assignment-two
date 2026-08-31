@@ -1,0 +1,48 @@
+clc;
+clear;
+students=readtable("C:\Users\Dan Gii\Desktop\GROUP 9\group9.xlsx");
+disp(students);
+writetable(students,"group9.xlsx");
+figure;
+AGE_plot=bar(students.AGE);
+title("student's AGE");
+xlabel("students");
+ylabel("AGE");
+figure;
+CGPA_plot=bar(students.CGPA);
+title("student's CGPA");
+xlabel("student Names");
+ylabel("CGPA");
+figure;
+tribeData=categorical(students.TRIBE);
+tribeCounts=countcats(tribeData);
+bar(tribeCounts);
+xlabel('Tribe');
+ylabel('Number of Students');
+title('Students by Tribe');
+set(gca, 'XTick', 1:numel(categories(tribeData)), ...
+    'XTickLabel', categories(tribeData));
+grid on;
+saveas(gcf, 'Students_By_Tribe.png');
+figure;
+hostelData=categorical(students.HOSTEL);
+hostelCounts=countcats(hostelData);
+bar(hostelCounts);
+xlabel('Hostel/Hall');
+ylabel('Number of Students');
+title('Students by Hostel/Hall');
+set(gca, 'XTick', 1:numel(categories(hostelData)), ...
+    'XTickLabel', categories(hostelData));
+grid on;
+saveas(gcf, 'Students_By_Hostel.png');
+figure;
+associationData=categorical(students.ASSOCIATION);
+associationCounts=countcats(associationData);
+bar(associationCounts);
+xlabel('association');
+ylabel('Number of Students');
+title('Students by association');
+set(gca, 'XTick', 1:numel(categories(associationData)), ...
+    'XTickLabel', categories(associationData));
+grid on;
+saveas(gcf, 'Students_By_association.png');
